@@ -15,8 +15,8 @@ Some examples with STM32F10x standard peripheral library.
 ## Directory description
 
 - **CMSIS**：内核驱动程序；
-- **library**：片上外设固件库；
-- **startup**：汇编启动程序；
-- **sources**：用户功能代码；
-- **common**：封装的通用功能；
-- **driver**：BSP 板级驱动程序。
+- **Libraries**：片上外设固件库；
+- **Startup**：汇编启动程序；
+- **Sources**：用户功能代码；
+- **Common**：封装的通用功能；
+- **Drivers**：BSP 板级支持包。
