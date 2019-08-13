@@ -1,6 +1,6 @@
 # Merkava
 
-A seed project with STM32F10x standard peripheral library.
+Some examples with STM32F10x standard peripheral library.
 
 ![logo](./assets/logo.jpg)
 
@@ -15,7 +15,7 @@ A seed project with STM32F10x standard peripheral library.
 ## Directory description
 
 - **CMSIS**：内核驱动程序；
-- **library**：基本固件库；
+- **library**：片上外设固件库；
 - **startup**：汇编启动程序；
 - **sources**：用户功能代码；
 - **common**：封装的通用功能；

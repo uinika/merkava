@@ -1,3 +1,5 @@
-DebugConfig
+**/Objects/
 
-Objects
+**/DebugConfig/
+
+!**/Objects/*.hex
