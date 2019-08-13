@@ -6,7 +6,7 @@ A seed project with STM32F10x standard peripheral library.
 
 ## Base on
 
-- MCU **STM32F103C8T6**
+- MCU **STM32F103ZET6**
 - Keil uVision V5.28.0.0
 - STM32F10x standard peripheral library 3.5.0.
 
@@ -14,9 +14,9 @@ A seed project with STM32F10x standard peripheral library.
 
 ## Directory description
 
-- **CMSIS**：内核驱动程序
-- **Lib**：内部功能基本函数库
-- **Startup**：汇编编写的启动程序
-- **User**：用户主函数以及其它用户程序
-- **Basic**：内部功能驱动函数
-- **Hardware**：外部硬件驱动函数
+- **CMSIS**：内核驱动程序；
+- **library**：基本固件库；
+- **startup**：汇编启动程序；
+- **sources**：用户功能代码；
+- **common**：封装的通用功能；
+- **driver**：BSP 板级驱动程序。
