@@ -681,6 +681,18 @@
         </Group>
         <Group>
           <GroupName>Drivers</GroupName>
+          <Files>
+            <File>
+              <FileName>led.c</FileName>
+              <FileType>1</FileType>
+              <FilePath>.\Project\Driver\led.c</FilePath>
+            </File>
+            <File>
+              <FileName>led.h</FileName>
+              <FileType>5</FileType>
+              <FilePath>.\Project\Driver\led.h</FilePath>
+            </File>
+          </Files>
         </Group>
       </Groups>
     </Target>
