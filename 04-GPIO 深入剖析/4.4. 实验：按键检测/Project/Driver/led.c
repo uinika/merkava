@@ -18,7 +18,7 @@ void LED_GPIO_Config(void) {
   GPIO_SetBits(LED3_GPIO_PORT, LED3_GPIO_PIN);
 }
 
-/* 打开 LED2 */
+/* 点亮 LED2 */
 void LED2_GPIO_On(void) {
   GPIO_ResetBits(LED2_GPIO_PORT, LED2_GPIO_PIN);
 }
@@ -28,7 +28,7 @@ void LED2_GPIO_Off(void) {
   GPIO_SetBits(LED2_GPIO_PORT, LED2_GPIO_PIN);
 }
 
-/* 打开 LED3 */
+/* 点亮 LED3 */
 void LED3_GPIO_Off(void) {
   GPIO_SetBits(LED3_GPIO_PORT, LED3_GPIO_PIN);
 }

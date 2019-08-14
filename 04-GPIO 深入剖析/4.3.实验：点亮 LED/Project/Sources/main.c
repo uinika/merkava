@@ -1,22 +1,23 @@
 #include "led.h"
 #include "stm32f10x.h"
 
-/* ¼òµ¥ÑÓÊ±º¯Êı */
+/* ç®€å•å»¶æ—¶å‡½æ•° */
 void Delay(volatile uint32_t count) {
-  for (; count != 0; count--)
-    ;
+  for (; count != 0; count--);
 }
 
 int main(void) {
-  LED_GPIO_Config(); // µ÷ÓÃ×Ô¶¨Òå LED ³õÊ¼»¯º¯Êı
+  LED_GPIO_Config(); // åˆå§‹åŒ– LED ç›¸å…³çš„ GPIO
 
   while (1) {
+    /* ç‚¹äº® LED2 å’Œ LED3 ä»¥åå»¶æ—¶ */
     LED2_GPIO_On();
-		LED3_GPIO_On();
+    LED3_GPIO_On();
     Delay(0x0FFFFF);
-		
+
+    /* ç†„ç­ LED2 å’Œ LED3 ä»¥åå»¶æ—¶ */
     LED2_GPIO_Off();
-		LED3_GPIO_Off();
+    LED3_GPIO_Off();
     Delay(0x0FFFFF);
   }
 }
