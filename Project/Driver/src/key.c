@@ -1,58 +1,19 @@
 #include "key.h"
 
-void Key_GPIO_Init(void) {
-  RCC_APB2PeriphClockCmd(KEY_S1_GPIO_CLK | KEY_S2_GPIO_CLK | KEY_S3_GPIO_CLK | KEY_S4_GPIO_CLK, ENABLE);
-
+void Key_Init(void) {
   GPIO_InitTypeDef GPIO_InitStructure;
-  GPIO_InitStructure.GPIO_Mode = GPIO_Mode_IN_FLOATING;
+  RCC_APB2PeriphClockCmd(RCC_APB2Periph_GPIOA, ENABLE);
+  RCC_APB2PeriphClockCmd(RCC_APB2Periph_GPIOE, ENABLE);
 
-  GPIO_InitStructure.GPIO_Pin = KEY_S1_GPIO_PIN;
-  GPIO_Init(KEY_S1_GPIO_PORT, &GPIO_InitStructure);
+  /* 配置 S1 S2 S3 按键*/
+  GPIO_InitStructure.GPIO_Pin = GPIO_Pin_2 | GPIO_Pin_3 | GPIO_Pin_4;
+  GPIO_InitStructure.GPIO_Speed = GPIO_Speed_10MHz;
+  GPIO_InitStructure.GPIO_Mode = GPIO_Mode_IPU; // 设置为输入上拉模式
+  GPIO_Init(GPIOE, &GPIO_InitStructure);
 
-  GPIO_InitStructure.GPIO_Pin = KEY_S2_GPIO_PIN;
-  GPIO_Init(KEY_S2_GPIO_PORT, &GPIO_InitStructure);
-
-  GPIO_InitStructure.GPIO_Pin = KEY_S3_GPIO_PIN;
-  GPIO_Init(KEY_S3_GPIO_PORT, &GPIO_InitStructure);
-
-  GPIO_InitStructure.GPIO_Pin = KEY_S4_GPIO_PIN;
-  GPIO_Init(KEY_S4_GPIO_PORT, &GPIO_InitStructure);
-}
-
-/** 按键扫描函数 */
-
-uint8_t Key_S1_Scan(void) {
-  /* 读取GPIO状态，判断是否有按键按下 */
-  if (GPIO_ReadInputDataBit(KEY_S1_GPIO_PORT, KEY_S1_GPIO_PIN) == 0) {
-    return KEY_DOWN;
-  } else {
-    return KEY_UP;
-  }
-}
-
-uint8_t Key_S2_Scan(void) {
-  /* 读取GPIO状态，判断是否有按键按下 */
-  if (GPIO_ReadInputDataBit(KEY_S2_GPIO_PORT, KEY_S2_GPIO_PIN) == 0) {
-    return KEY_DOWN;
-  } else {
-    return KEY_UP;
-  }
-}
-
-uint8_t Key_S3_Scan(void) {
-  /* 读取GPIO状态，判断是否有按键按下 */
-  if (GPIO_ReadInputDataBit(KEY_S3_GPIO_PORT, KEY_S3_GPIO_PIN) == 0) {
-    return KEY_DOWN;
-  } else {
-    return KEY_UP;
-  }
-}
-
-uint8_t Key_S4_Scan(void) {
-  /* 读取GPIO状态，判断是否有按键按下 */
-  if (GPIO_ReadInputDataBit(KEY_S4_GPIO_PORT, KEY_S4_GPIO_PIN) == 1) {
-    return KEY_DOWN;
-  } else {
-    return KEY_UP;
-  }
+  /* 配置 S4 按键*/
+  GPIO_InitStructure.GPIO_Pin = GPIO_Pin_0;
+  GPIO_InitStructure.GPIO_Speed = GPIO_Speed_10MHz;
+  GPIO_InitStructure.GPIO_Mode = GPIO_Mode_IPD; // 设置为输入下拉模式
+  GPIO_Init(GPIOA, &GPIO_InitStructure);
 }

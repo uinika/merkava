@@ -1,4 +1,3 @@
-#include "car.h"
 #include "delay.h"
 #include "key.h"
 #include "led.h"
@@ -8,17 +7,15 @@ int main(void) {
   LED_Init();   // 初始化 LED
   Key_Init();   // 初始化 按键
   Delay_Init(); // 初始化 延时
-  Car_Init();
 
   while (1) {
-
     /* 控制按键 S1 */
     if (!KEY_S1) {
       Delay_ms(10);
       if (!KEY_S1) {
         while (!KEY_S1)
-          ; // 等待按键弹起
-        Forward();
+          ;          // 等待按键弹起
+        LED2_TOGGLE; // 切换 LED2 亮灭状态
       }
     }
 
@@ -27,8 +24,8 @@ int main(void) {
       Delay_ms(10);
       if (!KEY_S2) {
         while (!KEY_S2)
-          ; // 等待按键弹起
-        Backward();
+          ;          // 等待按键弹起
+        LED3_TOGGLE; // 切换 LED3 亮灭状态
       }
     }
 
@@ -37,8 +34,9 @@ int main(void) {
       Delay_ms(10);
       if (!KEY_S3) {
         while (!KEY_S3)
-          ; // 等待按键弹起
-        Left();
+          ;          // 等待按键弹起
+        LED2_TOGGLE; // 切换 LED2 的亮灭状态
+        LED3_TOGGLE; // 切换 LED3 的亮灭状态
       }
     }
 
@@ -46,9 +44,12 @@ int main(void) {
     if (KEY_S4) {
       Delay_ms(10);
       if (KEY_S4) {
-        while (KEY_S4)
-          ; // 等待按键弹起
-        Right();
+        LED2_ON;
+        LED3_ON;
+        Delay_ms(1000);
+        LED2_OFF;
+        LED3_OFF;
+        Delay_ms(1000);
       }
     }
   }

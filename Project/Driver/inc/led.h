@@ -4,24 +4,15 @@
 #include "stm32f10x.h"
 
 /* LED 2 */
-#define LED2_GPIO_PORT GPIOE               // GPIO 组
-#define LED2_GPIO_CLK RCC_APB2Periph_GPIOE // GPIO 时钟
-#define LED2_GPIO_PIN GPIO_Pin_5           // GPIO 引脚
+#define LED2_OFF GPIO_SetBits(GPIOE, GPIO_Pin_5)
+#define LED2_ON GPIO_ResetBits(GPIOE, GPIO_Pin_5)
+#define LED2_TOGGLE GPIO_WriteBit(GPIOE, GPIO_Pin_5, (BitAction)(1 - (GPIO_ReadOutputDataBit(GPIOE, GPIO_Pin_5))))
 
 /* LED 3 */
-#define LED3_GPIO_PORT GPIOB               // GPIO 组
-#define LED3_GPIO_CLK RCC_APB2Periph_GPIOB // GPIO 时钟
-#define LED3_GPIO_PIN GPIO_Pin_5           // GPIO 引脚
+#define LED3_OFF GPIO_SetBits(GPIOB, GPIO_Pin_5)
+#define LED3_ON GPIO_ResetBits(GPIOB, GPIO_Pin_5)
+#define LED3_TOGGLE GPIO_WriteBit(GPIOB, GPIO_Pin_5, (BitAction)(1 - (GPIO_ReadOutputDataBit(GPIOB, GPIO_Pin_5))))
 
-void LED_GPIO_Init(void);
-
-void LED2_GPIO_On(void);
-void LED2_GPIO_Off(void);
-
-void LED3_GPIO_On(void);
-void LED3_GPIO_Off(void);
-
-#define LED2_Toggle LED2_GPIO_PORT->ODR ^= LED2_GPIO_PIN;  // LED2 状态切换
-#define LED3_Toggle LED3_GPIO_PORT->ODR ^= LED3_GPIO_PIN;  // LED3 状态切换
+void LED_Init(void);
 
 #endif /* Driver_LED */

@@ -338,7 +338,7 @@
               <MiscControls></MiscControls>
               <Define>USE_STDPERIPH_DRIVER,STM32F10X_HD</Define>
               <Undefine></Undefine>
-              <IncludePath>.\Project\Libraries\inc;.\Project\CMSIS;.\Project\Common;.\Project\Driver\inc</IncludePath>
+              <IncludePath>.\Project\Libraries\inc;.\Project\CMSIS;.\Project\Common\inc;.\Project\Driver\inc</IncludePath>
             </VariousControls>
           </Cads>
           <Aads>
@@ -528,9 +528,14 @@
           <GroupName>Common</GroupName>
           <Files>
             <File>
+              <FileName>delay.c</FileName>
+              <FileType>1</FileType>
+              <FilePath>.\Project\Common\src\delay.c</FilePath>
+            </File>
+            <File>
               <FileName>stm32f10x_it.c</FileName>
               <FileType>1</FileType>
-              <FilePath>.\Project\Common\stm32f10x_it.c</FilePath>
+              <FilePath>.\Project\Common\src\stm32f10x_it.c</FilePath>
             </File>
           </Files>
         </Group>

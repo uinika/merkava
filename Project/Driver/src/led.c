@@ -1,39 +1,20 @@
 #include "led.h"
 
 /** brief  初始化控制 LED 的 GPIO */
-void LED_GPIO_Init(void) {
-  GPIO_InitTypeDef GPIO_InitStructure;                           // 定义 GPIO_InitTypeDef 类型结构体
-  RCC_APB2PeriphClockCmd(LED2_GPIO_CLK | LED3_GPIO_CLK, ENABLE); // 开启 LED 相关的 GPIO 外设时钟
+void LED_Init(void) {
+  GPIO_InitTypeDef GPIO_InitStructure;                  // 定义 GPIO_InitTypeDef 类型结构体
+  RCC_APB2PeriphClockCmd(RCC_APB2Periph_GPIOE, ENABLE); // 开启 LED 相关的 GPIO 外设时钟
+  RCC_APB2PeriphClockCmd(RCC_APB2Periph_GPIOB, ENABLE);
 
-  GPIO_InitStructure.GPIO_Pin = LED2_GPIO_PIN;      // 选择 GPIO 引脚
   GPIO_InitStructure.GPIO_Mode = GPIO_Mode_Out_PP;  // 设置引脚模式为 推挽输出
   GPIO_InitStructure.GPIO_Speed = GPIO_Speed_50MHz; // 设置引脚速率为 50MHz
-  GPIO_Init(LED2_GPIO_PORT, &GPIO_InitStructure);   // 调用库函数初始化 GPIO
 
-  GPIO_InitStructure.GPIO_Pin = LED3_GPIO_PIN;    // 选择 GPIO 引脚
-  GPIO_Init(LED3_GPIO_PORT, &GPIO_InitStructure); // 调用库函数初始化 GPIO
+  GPIO_InitStructure.GPIO_Pin = GPIO_Pin_5; // 两个 LED 分别连接至 GPIOB 和 GPIOE 的 GPIO_Pin_5
 
-  /* GPIO 默认输出高电平，将 LED 初始为熄灭状态 */
-  GPIO_SetBits(LED2_GPIO_PORT, LED2_GPIO_PIN);
-  GPIO_SetBits(LED3_GPIO_PORT, LED3_GPIO_PIN);
-}
+  GPIO_Init(GPIOB, &GPIO_InitStructure); // 初始化 GPIOB
+  GPIO_Init(GPIOE, &GPIO_InitStructure); // 初始化 GPIOE
 
-/* 点亮 LED2 */
-void LED2_GPIO_On(void) {
-  GPIO_ResetBits(LED2_GPIO_PORT, LED2_GPIO_PIN);
-}
-
-/* 熄灭 LED2 */
-void LED2_GPIO_Off(void) {
-  GPIO_SetBits(LED2_GPIO_PORT, LED2_GPIO_PIN);
-}
-
-/* 点亮 LED3 */
-void LED3_GPIO_Off(void) {
-  GPIO_SetBits(LED3_GPIO_PORT, LED3_GPIO_PIN);
-}
-
-/* 熄灭 LED3 */
-void LED3_GPIO_On(void) {
-  GPIO_ResetBits(LED3_GPIO_PORT, LED3_GPIO_PIN);
+  /* 用户 LED 默认处于关闭状态 */
+  LED2_OFF;
+  LED3_OFF;
 }
