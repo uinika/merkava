@@ -567,6 +567,16 @@
               <FileType>1</FileType>
               <FilePath>.\Project\Driver\src\car.c</FilePath>
             </File>
+            <File>
+              <FileName>clock.c</FileName>
+              <FileType>1</FileType>
+              <FilePath>.\Project\Driver\src\clock.c</FilePath>
+            </File>
+            <File>
+              <FileName>mco.c</FileName>
+              <FileType>1</FileType>
+              <FilePath>.\Project\Driver\src\mco.c</FilePath>
+            </File>
           </Files>
         </Group>
       </Groups>
