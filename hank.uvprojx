@@ -578,9 +578,9 @@
               <FilePath>.\Project\Driver\src\mco.c</FilePath>
             </File>
             <File>
-              <FileName>interrupt.c</FileName>
+              <FileName>key_exti.c</FileName>
               <FileType>1</FileType>
-              <FilePath>.\Project\Driver\src\interrupt.c</FilePath>
+              <FilePath>.\Project\Driver\src\key_exti.c</FilePath>
             </File>
           </Files>
         </Group>

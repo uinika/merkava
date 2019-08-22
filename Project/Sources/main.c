@@ -1,6 +1,6 @@
 #include "key.h"
 #include "led.h"
-#include "interrupt.h"
+#include "key_exti.h"
 #include "stm32f10x.h"
 
 int main(void) {

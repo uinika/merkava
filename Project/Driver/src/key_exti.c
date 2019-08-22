@@ -1,4 +1,4 @@
-#include "interrupt.h"
+#include "key_exti.h"
 
 /* 嵌套向量中断控制器 NVIC 配置 */
 static void Key_NVIC_Init(void) {
@@ -28,7 +28,7 @@ void Key_EXTI_Init(void) {
   EXTI_InitTypeDef EXTI_InitStructure;
 
   RCC_APB2PeriphClockCmd(RCC_APB2Periph_AFIO, ENABLE); // 开启按键相关的 GPIO 外设时钟
-  Key_NVIC_Init();                                     // 调用上面声明的 NVIC 配置函数
+  Key_NVIC_Init();                                     // 调用上面定义的 NVIC 配置函数
 
   /* 配置按键 S1 对应的中断/事件线 EXTI_Line4 */
   GPIO_EXTILineConfig(GPIO_PortSourceGPIOE, GPIO_PinSource4); // 选择 GPIO 分组上的哪只引脚作为 EXTI 信号源
