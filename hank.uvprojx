@@ -577,6 +577,11 @@
               <FileType>1</FileType>
               <FilePath>.\Project\Driver\src\mco.c</FilePath>
             </File>
+            <File>
+              <FileName>interrupt.c</FileName>
+              <FileType>1</FileType>
+              <FilePath>.\Project\Driver\src\interrupt.c</FilePath>
+            </File>
           </Files>
         </Group>
       </Groups>

@@ -24,7 +24,10 @@
 /* Includes ------------------------------------------------------------------*/
 #include "stm32f10x_it.h"
 
+#include "led.h"
+
 extern void DecreaseDelayTime(void);
+
 /** @addtogroup STM32F10x_StdPeriph_Template
   * @{
   */
@@ -125,6 +128,41 @@ void SysTick_Handler(void) {
   DecreaseDelayTime();
 }
 
+/** @brief  EXTI4 中断服务函数 */
+void EXTI4_IRQHandler(void) {
+  /* 确认 EXTI 已经产生了中断 */
+  if (EXTI_GetITStatus(EXTI_Line4) != RESET) {
+    LED2_ON;                            // 点亮 LED2
+    EXTI_ClearITPendingBit(EXTI_Line4); // 清除中断标志位
+  }
+}
+
+/** @brief  EXTI3 中断服务函数 */
+void EXTI3_IRQHandler(void) {
+  /* 确认 EXTI 已经产生了中断 */
+  if (EXTI_GetITStatus(EXTI_Line3) != RESET) {
+    LED2_OFF;                           // 关闭 LED2
+    EXTI_ClearITPendingBit(EXTI_Line3); // 清除中断标志位
+  }
+}
+
+/** @brief  EXTI2 中断服务函数 */
+void EXTI2_IRQHandler(void) {
+  /* 确认 EXTI 已经产生了中断 */
+  if (EXTI_GetITStatus(EXTI_Line2) != RESET) {
+    LED3_ON;                            // 点亮 LED3
+    EXTI_ClearITPendingBit(EXTI_Line2); // 清除中断标志位
+  }
+}
+
+/** @brief  EXTI0 中断服务函数 */
+void EXTI0_IRQHandler(void) {
+  /* 确认 EXTI 已经产生了中断 */
+  if (EXTI_GetITStatus(EXTI_Line0) != RESET) {
+    LED3_OFF;                           // 关闭 LED3
+    EXTI_ClearITPendingBit(EXTI_Line0); // 清除中断标志位
+  }
+}
 /******************************************************************************/
 /*                 STM32F10x Peripherals Interrupt Handlers                   */
 /*  Add here the Interrupt Handler for the used peripheral(s) (PPP), for the  */
