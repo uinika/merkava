@@ -53,7 +53,7 @@ void Key_EXTI_Init(void) {
   EXTI_Init(&EXTI_InitStructure);
   /* 配置按键 S4 对应的中断/事件线 EXTI_Line0 */
   GPIO_EXTILineConfig(GPIO_PortSourceGPIOA, GPIO_PinSource0); // 选择 GPIO 分组上的哪只引脚作为 EXTI 信号源
-  EXTI_InitStructure.EXTI_Line = EXTI_Line0;                  // 选择 EXTI 中断/事件线为 EXTI_Line10
+  EXTI_InitStructure.EXTI_Line = EXTI_Line0;                  // 选择 EXTI 中断/事件线为 EXTI_Line0
   EXTI_InitStructure.EXTI_Mode = EXTI_Mode_Interrupt;         // 配置 EXTI 为中断生成模式
   EXTI_InitStructure.EXTI_Trigger = EXTI_Trigger_Rising;      // 设置 EXTI 的触发事件为上升沿触发
   EXTI_InitStructure.EXTI_LineCmd = ENABLE;                   // 使能 EXTI 中断/事件线
