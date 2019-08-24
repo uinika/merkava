@@ -23,7 +23,7 @@
 
 /* Includes ------------------------------------------------------------------*/
 #include "stm32f10x_it.h"
-
+#include "delay.h"
 #include "led.h"
 
 extern void DecreaseDelayTime(void);
@@ -125,7 +125,7 @@ void PendSV_Handler(void) {
   * @retval None
   */
 void SysTick_Handler(void) {
-  DecreaseDelayTime();
+  DelayDecrease();
 }
 
 /** @brief  EXTI4 中断服务函数 */
