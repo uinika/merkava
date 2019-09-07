@@ -1,11 +1,11 @@
-#include "key.h"
-#include "led.h"
-#include "key_exti.h"
+#include "stm32f10x.h"
+#include "usart.h"
 
 int main(void) {
-  LED_Init();      // 初始化 LED
-  Key_Init();      // 初始化 按键
-  Key_EXTI_Init(); // 初始化 EXTI
+  USART1_Init();
+
+  USART_Send_String(USART1, "Hello World!\n");
+  printf("Hello Hank!\n");
 
   while (1) {
   }

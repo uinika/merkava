@@ -582,6 +582,11 @@
               <FileType>1</FileType>
               <FilePath>.\Project\Driver\src\key_exti.c</FilePath>
             </File>
+            <File>
+              <FileName>usart.c</FileName>
+              <FileType>1</FileType>
+              <FilePath>.\Project\Driver\src\usart.c</FilePath>
+            </File>
           </Files>
         </Group>
       </Groups>

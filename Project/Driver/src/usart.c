@@ -1,3 +1,4 @@
+#include "usart.h"
 #include "stm32f10x.h"
 
 /** 配置嵌套向量中断控制器 NVIC */
@@ -14,7 +15,7 @@ static void NVIC_Config(void) {
 }
 
 /** 配置 USART 相关的 GPIO 引脚 */
-void USART_Init(void) {
+void USART1_Init(void) {
   GPIO_InitTypeDef GPIO_InitStructure;
   USART_InitTypeDef USART_InitStructure;
 
@@ -28,7 +29,7 @@ void USART_Init(void) {
   GPIO_Init(GPIOA, &GPIO_InitStructure);
 
   /* 把 USART 的 Rx 引脚对应的 GPIO 配置为浮空输入模式 */
-  GPIO_InitStructure.GPIO_Pin = DEBUG_USART_RX_GPIO_PIN;
+  GPIO_InitStructure.GPIO_Pin = GPIO_Pin_10;
   GPIO_InitStructure.GPIO_Mode = GPIO_Mode_IN_FLOATING;
   GPIO_Init(GPIOA, &GPIO_InitStructure);
 
@@ -39,7 +40,7 @@ void USART_Init(void) {
   USART_InitStructure.USART_Parity = USART_Parity_No;                             // 设置为无奇偶校验
   USART_InitStructure.USART_HardwareFlowControl = USART_HardwareFlowControl_None; // 失能硬件流控制模式
   USART_InitStructure.USART_Mode = USART_Mode_Rx | USART_Mode_Tx;                 // 设置 USART 工作模式为可接可发
-  USART_Init(DEBUG_USARTx, &USART_InitStructure);                                 // 初始化 USART 配置
+  USART_Init(USART1, &USART_InitStructure);                                       // 初始化 USART 配置
 
   NVIC_Config();                                 // 调用嵌套向量中断控制器 NVIC 配置函数
   USART_ITConfig(USART1, USART_IT_RXNE, ENABLE); // 使能 USART 中断
@@ -54,10 +55,10 @@ void USART_Send_Byte(USART_TypeDef *pUSARTx, uint8_t ch) {
 }
 
 /** 通过 USART 发送 1 个字符串 */
-void Usart_SendString(USART_TypeDef *pUSARTx, char *str) {
+void USART_Send_String(USART_TypeDef *pUSARTx, char *str) {
   unsigned int i = 0;
   do {
-    Usart_SendByte(pUSARTx, *(str + i));
+    USART_Send_Byte(pUSARTx, *(str + i));
     i++;
   } while (*(str + i) != '\0');
 
@@ -66,7 +67,7 @@ void Usart_SendString(USART_TypeDef *pUSARTx, char *str) {
 }
 
 /** 通过 USART 发送 16 位的半字 */
-void Usart_SendHalfWord(USART_TypeDef *pUSARTx, uint16_t ch) {
+void USART_Send_HalfWord(USART_TypeDef *pUSARTx, uint16_t ch) {
   uint8_t temp_h, temp_l;
 
   temp_h = (ch & 0XFF00) >> 8; // 获取高 8 位
@@ -86,9 +87,9 @@ void Usart_SendHalfWord(USART_TypeDef *pUSARTx, uint16_t ch) {
 /** 重写 Keil MicroLIB 提供的 printf() 函数 */
 int fputc(int ch, FILE *f) {
   /* 发送一个字节数据到串口 */
-  USART_SendData(DEBUG_USARTx, (uint8_t)ch);
+  USART_SendData(USART1, (uint8_t)ch);
 
-  while (USART_GetFlagStatus(DEBUG_USARTx, USART_FLAG_TXE) == RESET)
+  while (USART_GetFlagStatus(USART1, USART_FLAG_TXE) == RESET)
     ; // 检查 USART 标志位状态，判断发送是否已经完成
 
   return (ch);
@@ -96,8 +97,8 @@ int fputc(int ch, FILE *f) {
 
 /** 重写 Keil MicroLIB 提供的 scanf() 与 getchar() 函数 */
 int fgetc(FILE *f) {
-  while (USART_GetFlagStatus(DEBUG_USARTx, USART_FLAG_RXNE) == RESET)
+  while (USART_GetFlagStatus(USART1, USART_FLAG_RXNE) == RESET)
     ; // 检查 USART 标志位状态，判断串口是否输入数据
 
-  return (int)USART_ReceiveData(DEBUG_USARTx);
+  return (int)USART_ReceiveData(USART1);
 }

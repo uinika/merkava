@@ -23,6 +23,7 @@
 
 /* Includes ------------------------------------------------------------------*/
 #include "stm32f10x_it.h"
+#include "usart.h"
 #include "delay.h"
 #include "led.h"
 
@@ -162,6 +163,16 @@ void EXTI0_IRQHandler(void) {
     LED3_OFF;                           // 关闭 LED3
     EXTI_ClearITPendingBit(EXTI_Line0); // 清除中断标志位
   }
+}
+
+/** @brief  USART1 中断服务函数 */
+void USART1_IRQHandler(void) {
+  uint8_t ucTemp;
+	if(USART_GetITStatus(USART1,USART_IT_RXNE)!=RESET)
+	{		
+		ucTemp = USART_ReceiveData(USART1);
+    USART_SendData(USART1,ucTemp);    
+	}	 
 }
 /******************************************************************************/
 /*                 STM32F10x Peripherals Interrupt Handlers                   */
