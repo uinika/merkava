@@ -338,7 +338,7 @@
               <MiscControls></MiscControls>
               <Define>USE_STDPERIPH_DRIVER,STM32F10X_HD</Define>
               <Undefine></Undefine>
-              <IncludePath>.\Project\Libraries\inc;.\Project\CMSIS;.\Project\Common\inc;.\Project\Driver\inc</IncludePath>
+              <IncludePath>.\Project\Libraries;.\Project\CMSIS;.\Project\Common;.\Project\Driver</IncludePath>
             </VariousControls>
           </Cads>
           <Aads>
@@ -385,117 +385,232 @@
             <File>
               <FileName>misc.c</FileName>
               <FileType>1</FileType>
-              <FilePath>.\Project\Libraries\src\misc.c</FilePath>
+              <FilePath>.\Project\Libraries\misc.c</FilePath>
+            </File>
+            <File>
+              <FileName>misc.h</FileName>
+              <FileType>5</FileType>
+              <FilePath>.\Project\Libraries\misc.h</FilePath>
             </File>
             <File>
               <FileName>stm32f10x_adc.c</FileName>
               <FileType>1</FileType>
-              <FilePath>.\Project\Libraries\src\stm32f10x_adc.c</FilePath>
+              <FilePath>.\Project\Libraries\stm32f10x_adc.c</FilePath>
+            </File>
+            <File>
+              <FileName>stm32f10x_adc.h</FileName>
+              <FileType>5</FileType>
+              <FilePath>.\Project\Libraries\stm32f10x_adc.h</FilePath>
             </File>
             <File>
               <FileName>stm32f10x_bkp.c</FileName>
               <FileType>1</FileType>
-              <FilePath>.\Project\Libraries\src\stm32f10x_bkp.c</FilePath>
+              <FilePath>.\Project\Libraries\stm32f10x_bkp.c</FilePath>
+            </File>
+            <File>
+              <FileName>stm32f10x_bkp.h</FileName>
+              <FileType>5</FileType>
+              <FilePath>.\Project\Libraries\stm32f10x_bkp.h</FilePath>
             </File>
             <File>
               <FileName>stm32f10x_can.c</FileName>
               <FileType>1</FileType>
-              <FilePath>.\Project\Libraries\src\stm32f10x_can.c</FilePath>
+              <FilePath>.\Project\Libraries\stm32f10x_can.c</FilePath>
+            </File>
+            <File>
+              <FileName>stm32f10x_can.h</FileName>
+              <FileType>5</FileType>
+              <FilePath>.\Project\Libraries\stm32f10x_can.h</FilePath>
             </File>
             <File>
               <FileName>stm32f10x_cec.c</FileName>
               <FileType>1</FileType>
-              <FilePath>.\Project\Libraries\src\stm32f10x_cec.c</FilePath>
+              <FilePath>.\Project\Libraries\stm32f10x_cec.c</FilePath>
+            </File>
+            <File>
+              <FileName>stm32f10x_cec.h</FileName>
+              <FileType>5</FileType>
+              <FilePath>.\Project\Libraries\stm32f10x_cec.h</FilePath>
             </File>
             <File>
               <FileName>stm32f10x_crc.c</FileName>
               <FileType>1</FileType>
-              <FilePath>.\Project\Libraries\src\stm32f10x_crc.c</FilePath>
+              <FilePath>.\Project\Libraries\stm32f10x_crc.c</FilePath>
+            </File>
+            <File>
+              <FileName>stm32f10x_crc.h</FileName>
+              <FileType>5</FileType>
+              <FilePath>.\Project\Libraries\stm32f10x_crc.h</FilePath>
             </File>
             <File>
               <FileName>stm32f10x_dac.c</FileName>
               <FileType>1</FileType>
-              <FilePath>.\Project\Libraries\src\stm32f10x_dac.c</FilePath>
+              <FilePath>.\Project\Libraries\stm32f10x_dac.c</FilePath>
+            </File>
+            <File>
+              <FileName>stm32f10x_dac.h</FileName>
+              <FileType>5</FileType>
+              <FilePath>.\Project\Libraries\stm32f10x_dac.h</FilePath>
             </File>
             <File>
               <FileName>stm32f10x_dbgmcu.c</FileName>
               <FileType>1</FileType>
-              <FilePath>.\Project\Libraries\src\stm32f10x_dbgmcu.c</FilePath>
+              <FilePath>.\Project\Libraries\stm32f10x_dbgmcu.c</FilePath>
+            </File>
+            <File>
+              <FileName>stm32f10x_dbgmcu.h</FileName>
+              <FileType>5</FileType>
+              <FilePath>.\Project\Libraries\stm32f10x_dbgmcu.h</FilePath>
             </File>
             <File>
               <FileName>stm32f10x_dma.c</FileName>
               <FileType>1</FileType>
-              <FilePath>.\Project\Libraries\src\stm32f10x_dma.c</FilePath>
+              <FilePath>.\Project\Libraries\stm32f10x_dma.c</FilePath>
+            </File>
+            <File>
+              <FileName>stm32f10x_dma.h</FileName>
+              <FileType>5</FileType>
+              <FilePath>.\Project\Libraries\stm32f10x_dma.h</FilePath>
             </File>
             <File>
               <FileName>stm32f10x_exti.c</FileName>
               <FileType>1</FileType>
-              <FilePath>.\Project\Libraries\src\stm32f10x_exti.c</FilePath>
+              <FilePath>.\Project\Libraries\stm32f10x_exti.c</FilePath>
+            </File>
+            <File>
+              <FileName>stm32f10x_exti.h</FileName>
+              <FileType>5</FileType>
+              <FilePath>.\Project\Libraries\stm32f10x_exti.h</FilePath>
             </File>
             <File>
               <FileName>stm32f10x_flash.c</FileName>
               <FileType>1</FileType>
-              <FilePath>.\Project\Libraries\src\stm32f10x_flash.c</FilePath>
+              <FilePath>.\Project\Libraries\stm32f10x_flash.c</FilePath>
+            </File>
+            <File>
+              <FileName>stm32f10x_flash.h</FileName>
+              <FileType>5</FileType>
+              <FilePath>.\Project\Libraries\stm32f10x_flash.h</FilePath>
             </File>
             <File>
               <FileName>stm32f10x_fsmc.c</FileName>
               <FileType>1</FileType>
-              <FilePath>.\Project\Libraries\src\stm32f10x_fsmc.c</FilePath>
+              <FilePath>.\Project\Libraries\stm32f10x_fsmc.c</FilePath>
+            </File>
+            <File>
+              <FileName>stm32f10x_fsmc.h</FileName>
+              <FileType>5</FileType>
+              <FilePath>.\Project\Libraries\stm32f10x_fsmc.h</FilePath>
             </File>
             <File>
               <FileName>stm32f10x_gpio.c</FileName>
               <FileType>1</FileType>
-              <FilePath>.\Project\Libraries\src\stm32f10x_gpio.c</FilePath>
+              <FilePath>.\Project\Libraries\stm32f10x_gpio.c</FilePath>
+            </File>
+            <File>
+              <FileName>stm32f10x_gpio.h</FileName>
+              <FileType>5</FileType>
+              <FilePath>.\Project\Libraries\stm32f10x_gpio.h</FilePath>
             </File>
             <File>
               <FileName>stm32f10x_i2c.c</FileName>
               <FileType>1</FileType>
-              <FilePath>.\Project\Libraries\src\stm32f10x_i2c.c</FilePath>
+              <FilePath>.\Project\Libraries\stm32f10x_i2c.c</FilePath>
+            </File>
+            <File>
+              <FileName>stm32f10x_i2c.h</FileName>
+              <FileType>5</FileType>
+              <FilePath>.\Project\Libraries\stm32f10x_i2c.h</FilePath>
             </File>
             <File>
               <FileName>stm32f10x_iwdg.c</FileName>
               <FileType>1</FileType>
-              <FilePath>.\Project\Libraries\src\stm32f10x_iwdg.c</FilePath>
+              <FilePath>.\Project\Libraries\stm32f10x_iwdg.c</FilePath>
+            </File>
+            <File>
+              <FileName>stm32f10x_iwdg.h</FileName>
+              <FileType>5</FileType>
+              <FilePath>.\Project\Libraries\stm32f10x_iwdg.h</FilePath>
             </File>
             <File>
               <FileName>stm32f10x_pwr.c</FileName>
               <FileType>1</FileType>
-              <FilePath>.\Project\Libraries\src\stm32f10x_pwr.c</FilePath>
+              <FilePath>.\Project\Libraries\stm32f10x_pwr.c</FilePath>
+            </File>
+            <File>
+              <FileName>stm32f10x_pwr.h</FileName>
+              <FileType>5</FileType>
+              <FilePath>.\Project\Libraries\stm32f10x_pwr.h</FilePath>
             </File>
             <File>
               <FileName>stm32f10x_rcc.c</FileName>
               <FileType>1</FileType>
-              <FilePath>.\Project\Libraries\src\stm32f10x_rcc.c</FilePath>
+              <FilePath>.\Project\Libraries\stm32f10x_rcc.c</FilePath>
+            </File>
+            <File>
+              <FileName>stm32f10x_rcc.h</FileName>
+              <FileType>5</FileType>
+              <FilePath>.\Project\Libraries\stm32f10x_rcc.h</FilePath>
             </File>
             <File>
               <FileName>stm32f10x_rtc.c</FileName>
               <FileType>1</FileType>
-              <FilePath>.\Project\Libraries\src\stm32f10x_rtc.c</FilePath>
+              <FilePath>.\Project\Libraries\stm32f10x_rtc.c</FilePath>
+            </File>
+            <File>
+              <FileName>stm32f10x_rtc.h</FileName>
+              <FileType>5</FileType>
+              <FilePath>.\Project\Libraries\stm32f10x_rtc.h</FilePath>
             </File>
             <File>
               <FileName>stm32f10x_sdio.c</FileName>
               <FileType>1</FileType>
-              <FilePath>.\Project\Libraries\src\stm32f10x_sdio.c</FilePath>
+              <FilePath>.\Project\Libraries\stm32f10x_sdio.c</FilePath>
+            </File>
+            <File>
+              <FileName>stm32f10x_sdio.h</FileName>
+              <FileType>5</FileType>
+              <FilePath>.\Project\Libraries\stm32f10x_sdio.h</FilePath>
             </File>
             <File>
               <FileName>stm32f10x_spi.c</FileName>
               <FileType>1</FileType>
-              <FilePath>.\Project\Libraries\src\stm32f10x_spi.c</FilePath>
+              <FilePath>.\Project\Libraries\stm32f10x_spi.c</FilePath>
+            </File>
+            <File>
+              <FileName>stm32f10x_spi.h</FileName>
+              <FileType>5</FileType>
+              <FilePath>.\Project\Libraries\stm32f10x_spi.h</FilePath>
             </File>
             <File>
               <FileName>stm32f10x_tim.c</FileName>
               <FileType>1</FileType>
-              <FilePath>.\Project\Libraries\src\stm32f10x_tim.c</FilePath>
+              <FilePath>.\Project\Libraries\stm32f10x_tim.c</FilePath>
+            </File>
+            <File>
+              <FileName>stm32f10x_tim.h</FileName>
+              <FileType>5</FileType>
+              <FilePath>.\Project\Libraries\stm32f10x_tim.h</FilePath>
             </File>
             <File>
               <FileName>stm32f10x_usart.c</FileName>
               <FileType>1</FileType>
-              <FilePath>.\Project\Libraries\src\stm32f10x_usart.c</FilePath>
+              <FilePath>.\Project\Libraries\stm32f10x_usart.c</FilePath>
+            </File>
+            <File>
+              <FileName>stm32f10x_usart.h</FileName>
+              <FileType>5</FileType>
+              <FilePath>.\Project\Libraries\stm32f10x_usart.h</FilePath>
             </File>
             <File>
               <FileName>stm32f10x_wwdg.c</FileName>
               <FileType>1</FileType>
-              <FilePath>.\Project\Libraries\src\stm32f10x_wwdg.c</FilePath>
+              <FilePath>.\Project\Libraries\stm32f10x_wwdg.c</FilePath>
+            </File>
+            <File>
+              <FileName>stm32f10x_wwdg.h</FileName>
+              <FileType>5</FileType>
+              <FilePath>.\Project\Libraries\stm32f10x_wwdg.h</FilePath>
             </File>
           </Files>
         </Group>
@@ -528,14 +643,34 @@
           <GroupName>Common</GroupName>
           <Files>
             <File>
+              <FileName>bit_band.h</FileName>
+              <FileType>5</FileType>
+              <FilePath>.\Project\Common\bit_band.h</FilePath>
+            </File>
+            <File>
               <FileName>delay.c</FileName>
               <FileType>1</FileType>
-              <FilePath>.\Project\Common\src\delay.c</FilePath>
+              <FilePath>.\Project\Common\delay.c</FilePath>
+            </File>
+            <File>
+              <FileName>delay.h</FileName>
+              <FileType>5</FileType>
+              <FilePath>.\Project\Common\delay.h</FilePath>
+            </File>
+            <File>
+              <FileName>stm32f10x_conf.h</FileName>
+              <FileType>5</FileType>
+              <FilePath>.\Project\Common\stm32f10x_conf.h</FilePath>
             </File>
             <File>
               <FileName>stm32f10x_it.c</FileName>
               <FileType>1</FileType>
-              <FilePath>.\Project\Common\src\stm32f10x_it.c</FilePath>
+              <FilePath>.\Project\Common\stm32f10x_it.c</FilePath>
+            </File>
+            <File>
+              <FileName>stm32f10x_it.h</FileName>
+              <FileType>5</FileType>
+              <FilePath>.\Project\Common\stm32f10x_it.h</FilePath>
             </File>
           </Files>
         </Group>
@@ -553,39 +688,74 @@
           <GroupName>Drivers</GroupName>
           <Files>
             <File>
-              <FileName>key.c</FileName>
-              <FileType>1</FileType>
-              <FilePath>.\Project\Driver\src\key.c</FilePath>
-            </File>
-            <File>
-              <FileName>led.c</FileName>
-              <FileType>1</FileType>
-              <FilePath>.\Project\Driver\src\led.c</FilePath>
-            </File>
-            <File>
               <FileName>car.c</FileName>
               <FileType>1</FileType>
-              <FilePath>.\Project\Driver\src\car.c</FilePath>
+              <FilePath>.\Project\Driver\car.c</FilePath>
+            </File>
+            <File>
+              <FileName>car.h</FileName>
+              <FileType>5</FileType>
+              <FilePath>.\Project\Driver\car.h</FilePath>
             </File>
             <File>
               <FileName>clock.c</FileName>
               <FileType>1</FileType>
-              <FilePath>.\Project\Driver\src\clock.c</FilePath>
+              <FilePath>.\Project\Driver\clock.c</FilePath>
             </File>
             <File>
-              <FileName>mco.c</FileName>
+              <FileName>clock.h</FileName>
+              <FileType>5</FileType>
+              <FilePath>.\Project\Driver\clock.h</FilePath>
+            </File>
+            <File>
+              <FileName>key.c</FileName>
               <FileType>1</FileType>
-              <FilePath>.\Project\Driver\src\mco.c</FilePath>
+              <FilePath>.\Project\Driver\key.c</FilePath>
+            </File>
+            <File>
+              <FileName>key.h</FileName>
+              <FileType>5</FileType>
+              <FilePath>.\Project\Driver\key.h</FilePath>
             </File>
             <File>
               <FileName>key_exti.c</FileName>
               <FileType>1</FileType>
-              <FilePath>.\Project\Driver\src\key_exti.c</FilePath>
+              <FilePath>.\Project\Driver\key_exti.c</FilePath>
+            </File>
+            <File>
+              <FileName>key_exti.h</FileName>
+              <FileType>5</FileType>
+              <FilePath>.\Project\Driver\key_exti.h</FilePath>
+            </File>
+            <File>
+              <FileName>led.c</FileName>
+              <FileType>1</FileType>
+              <FilePath>.\Project\Driver\led.c</FilePath>
+            </File>
+            <File>
+              <FileName>led.h</FileName>
+              <FileType>5</FileType>
+              <FilePath>.\Project\Driver\led.h</FilePath>
+            </File>
+            <File>
+              <FileName>mco.c</FileName>
+              <FileType>1</FileType>
+              <FilePath>.\Project\Driver\mco.c</FilePath>
+            </File>
+            <File>
+              <FileName>mco.h</FileName>
+              <FileType>5</FileType>
+              <FilePath>.\Project\Driver\mco.h</FilePath>
             </File>
             <File>
               <FileName>usart.c</FileName>
               <FileType>1</FileType>
-              <FilePath>.\Project\Driver\src\usart.c</FilePath>
+              <FilePath>.\Project\Driver\usart.c</FilePath>
+            </File>
+            <File>
+              <FileName>usart.h</FileName>
+              <FileType>5</FileType>
+              <FilePath>.\Project\Driver\usart.h</FilePath>
             </File>
           </Files>
         </Group>

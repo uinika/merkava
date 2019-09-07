@@ -6,20 +6,23 @@ static void NVIC_Config(void) {
   NVIC_InitTypeDef NVIC_InitStructure;
 
   NVIC_PriorityGroupConfig(NVIC_PriorityGroup_2);           // 配置 NVIC 为优先级分组 2
-  NVIC_InitStructure.NVIC_IRQChannel = USART1_IRQn;         // 配置 USART1 为中断源
   NVIC_InitStructure.NVIC_IRQChannelPreemptionPriority = 1; // 设置抢占式优先级
   NVIC_InitStructure.NVIC_IRQChannelSubPriority = 1;        // 设置子优先级
   NVIC_InitStructure.NVIC_IRQChannelCmd = ENABLE;           // 使能中断通道
 
-  NVIC_Init(&NVIC_InitStructure); // 初始化 NVIC 配置
+  NVIC_InitStructure.NVIC_IRQChannel = USART1_IRQn;         // 配置 USART1 为中断源
+  NVIC_Init(&NVIC_InitStructure);                           // 初始化 NVIC 配置
+
+  NVIC_InitStructure.NVIC_IRQChannel = USART2_IRQn;         // 配置 USART2 为中断源
+  NVIC_Init(&NVIC_InitStructure);                           // 初始化 NVIC 配置
 }
 
-/** 配置 USART 相关的 GPIO 引脚 */
+/** 配置 USART1 相关的 GPIO 引脚 */
 void USART1_Init(void) {
   GPIO_InitTypeDef GPIO_InitStructure;
   USART_InitTypeDef USART_InitStructure;
 
-  RCC_APB2PeriphClockCmd(RCC_APB2Periph_GPIOA, ENABLE);  // 打开串口GPIO的时钟
+  RCC_APB2PeriphClockCmd(RCC_APB2Periph_GPIOA, ENABLE);  // 打开串口 GPIO 的时钟
   RCC_APB2PeriphClockCmd(RCC_APB2Periph_USART1, ENABLE); // 打开串口外设的时钟
 
   /* 把 USART 的 Tx 引脚对应的 GPIO 配置为复用推挽输出模式 */
@@ -45,6 +48,39 @@ void USART1_Init(void) {
   NVIC_Config();                                 // 调用嵌套向量中断控制器 NVIC 配置函数
   USART_ITConfig(USART1, USART_IT_RXNE, ENABLE); // 使能 USART 中断
   USART_Cmd(USART1, ENABLE);                     // 使能 USART 外设
+}
+
+/** 配置 USART2 相关的 GPIO 引脚 */
+void USART2_Init(void) {
+  GPIO_InitTypeDef GPIO_InitStructure;
+  USART_InitTypeDef USART_InitStructure;
+
+  RCC_APB2PeriphClockCmd(RCC_APB2Periph_GPIOA, ENABLE);  // 打开串口 GPIO 的时钟
+  RCC_APB1PeriphClockCmd(RCC_APB1Periph_USART2, ENABLE); // 打开串口外设的时钟
+
+  /* 把 USART 的 Tx 引脚对应的 GPIO 配置为复用推挽输出模式 */
+  GPIO_InitStructure.GPIO_Pin = GPIO_Pin_2;
+  GPIO_InitStructure.GPIO_Mode = GPIO_Mode_AF_PP;
+  GPIO_InitStructure.GPIO_Speed = GPIO_Speed_50MHz;
+  GPIO_Init(GPIOA, &GPIO_InitStructure);
+
+  /* 把 USART 的 Rx 引脚对应的 GPIO 配置为浮空输入模式 */
+  GPIO_InitStructure.GPIO_Pin = GPIO_Pin_3;
+  GPIO_InitStructure.GPIO_Mode = GPIO_Mode_IN_FLOATING;
+  GPIO_Init(GPIOA, &GPIO_InitStructure);
+
+  /* 配置 USART 工作参数 */
+  USART_InitStructure.USART_BaudRate = 115200;                                    // 设置波特率为 1115200
+  USART_InitStructure.USART_WordLength = USART_WordLength_8b;                     // 设置数据帧长度
+  USART_InitStructure.USART_StopBits = USART_StopBits_2;                          // 设置停止位
+  USART_InitStructure.USART_Parity = USART_Parity_No;                             // 设置为无奇偶校验
+  USART_InitStructure.USART_HardwareFlowControl = USART_HardwareFlowControl_None; // 失能硬件流控制模式
+  USART_InitStructure.USART_Mode = USART_Mode_Rx | USART_Mode_Tx;                 // 设置 USART 工作模式为可接可发
+  USART_Init(USART2, &USART_InitStructure);                                       // 初始化 USART 配置
+
+  NVIC_Config();                                 // 调用嵌套向量中断控制器 NVIC 配置函数
+  USART_ITConfig(USART2, USART_IT_RXNE, ENABLE); // 使能 USART 中断
+  USART_Cmd(USART2, ENABLE);                     // 使能 USART 外设
 }
 
 /** 通过 USART 发送 1 个字节 */

@@ -29,6 +29,65 @@
 
 extern void DecreaseDelayTime(void);
 
+/** @brief  SysTick 中断服务函数 */
+void SysTick_Handler(void) {
+  DelayDecrease();
+}
+
+/** @brief  EXTI4 中断服务函数 */
+void EXTI4_IRQHandler(void) {
+  /* 确认 EXTI 已经产生了中断 */
+  if (EXTI_GetITStatus(EXTI_Line4) != RESET) {
+    LED2_ON;                            // 点亮 LED2
+    EXTI_ClearITPendingBit(EXTI_Line4); // 清除中断标志位
+  }
+}
+
+/** @brief  EXTI3 中断服务函数 */
+void EXTI3_IRQHandler(void) {
+  /* 确认 EXTI 已经产生了中断 */
+  if (EXTI_GetITStatus(EXTI_Line3) != RESET) {
+    LED2_OFF;                           // 关闭 LED2
+    EXTI_ClearITPendingBit(EXTI_Line3); // 清除中断标志位
+  }
+}
+
+/** @brief  EXTI2 中断服务函数 */
+void EXTI2_IRQHandler(void) {
+  /* 确认 EXTI 已经产生了中断 */
+  if (EXTI_GetITStatus(EXTI_Line2) != RESET) {
+    LED3_ON;                            // 点亮 LED3
+    EXTI_ClearITPendingBit(EXTI_Line2); // 清除中断标志位
+  }
+}
+
+/** @brief  EXTI0 中断服务函数 */
+void EXTI0_IRQHandler(void) {
+  /* 确认 EXTI 已经产生了中断 */
+  if (EXTI_GetITStatus(EXTI_Line0) != RESET) {
+    LED3_OFF;                           // 关闭 LED3
+    EXTI_ClearITPendingBit(EXTI_Line0); // 清除中断标志位
+  }
+}
+
+/** @brief  USART2 中断服务函数 */
+void USART1_IRQHandler(void) {
+  uint8_t data;
+  if(USART_GetITStatus(USART1,USART_IT_RXNE) != RESET) {
+    data = USART_ReceiveData(USART1);
+    USART_SendData(USART1,data);
+  }
+}
+
+/** @brief  USART2 中断服务函数 */
+void USART2_IRQHandler(void) {
+  uint8_t data;
+  if(USART_GetITStatus(USART2,USART_IT_RXNE) != RESET) {
+    data = USART_ReceiveData(USART2);
+    USART_SendData(USART2,data);
+  }
+}
+
 /** @addtogroup STM32F10x_StdPeriph_Template
   * @{
   */
@@ -120,60 +179,6 @@ void DebugMon_Handler(void) {
 void PendSV_Handler(void) {
 }
 
-/**
-  * @brief  This function handles SysTick Handler.
-  * @param  None
-  * @retval None
-  */
-void SysTick_Handler(void) {
-  DelayDecrease();
-}
-
-/** @brief  EXTI4 中断服务函数 */
-void EXTI4_IRQHandler(void) {
-  /* 确认 EXTI 已经产生了中断 */
-  if (EXTI_GetITStatus(EXTI_Line4) != RESET) {
-    LED2_ON;                            // 点亮 LED2
-    EXTI_ClearITPendingBit(EXTI_Line4); // 清除中断标志位
-  }
-}
-
-/** @brief  EXTI3 中断服务函数 */
-void EXTI3_IRQHandler(void) {
-  /* 确认 EXTI 已经产生了中断 */
-  if (EXTI_GetITStatus(EXTI_Line3) != RESET) {
-    LED2_OFF;                           // 关闭 LED2
-    EXTI_ClearITPendingBit(EXTI_Line3); // 清除中断标志位
-  }
-}
-
-/** @brief  EXTI2 中断服务函数 */
-void EXTI2_IRQHandler(void) {
-  /* 确认 EXTI 已经产生了中断 */
-  if (EXTI_GetITStatus(EXTI_Line2) != RESET) {
-    LED3_ON;                            // 点亮 LED3
-    EXTI_ClearITPendingBit(EXTI_Line2); // 清除中断标志位
-  }
-}
-
-/** @brief  EXTI0 中断服务函数 */
-void EXTI0_IRQHandler(void) {
-  /* 确认 EXTI 已经产生了中断 */
-  if (EXTI_GetITStatus(EXTI_Line0) != RESET) {
-    LED3_OFF;                           // 关闭 LED3
-    EXTI_ClearITPendingBit(EXTI_Line0); // 清除中断标志位
-  }
-}
-
-/** @brief  USART1 中断服务函数 */
-void USART1_IRQHandler(void) {
-  uint8_t ucTemp;
-	if(USART_GetITStatus(USART1,USART_IT_RXNE)!=RESET)
-	{		
-		ucTemp = USART_ReceiveData(USART1);
-    USART_SendData(USART1,ucTemp);    
-	}	 
-}
 /******************************************************************************/
 /*                 STM32F10x Peripherals Interrupt Handlers                   */
 /*  Add here the Interrupt Handler for the used peripheral(s) (PPP), for the  */
