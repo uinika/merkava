@@ -3,7 +3,7 @@
 
 uint32_t SRAM_Buffer[BUFFER_SIZE]; // 定义DMA传输目标存储器存储在内部的 SRAM 当中
 
-/* DMA 传输的数据源，使用 const 关键字将其保存至 Flash */
+/** DMA 传输的数据源，使用 const 关键字将其保存至 Flash */
 const uint32_t Flash_Buffer[BUFFER_SIZE] = {
     0x01020304, 0x05060708, 0x090A0B0C, 0x0D0E0F10,
     0x11121314, 0x15161718, 0x191A1B1C, 0x1D1E1F20,
@@ -14,6 +14,7 @@ const uint32_t Flash_Buffer[BUFFER_SIZE] = {
     0x61626364, 0x65666768, 0x696A6B6C, 0x6D6E6F70,
     0x71727374, 0x75767778, 0x797A7B7C, 0x7D7E7F80};
 
+/** DMA 初始化配置函数 */
 void DMA_Config(void) {
   DMA_InitTypeDef DMA_InitStructure;
 
