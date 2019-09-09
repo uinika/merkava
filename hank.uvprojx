@@ -757,6 +757,16 @@
               <FileType>5</FileType>
               <FilePath>.\Project\Driver\usart.h</FilePath>
             </File>
+            <File>
+              <FileName>dma.c</FileName>
+              <FileType>1</FileType>
+              <FilePath>.\Project\Driver\dma.c</FilePath>
+            </File>
+            <File>
+              <FileName>dma.h</FileName>
+              <FileType>5</FileType>
+              <FilePath>.\Project\Driver\dma.h</FilePath>
+            </File>
           </Files>
         </Group>
       </Groups>
